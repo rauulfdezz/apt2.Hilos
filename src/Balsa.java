@@ -1,16 +1,16 @@
 public class Balsa {
 
     private int capacidad;
-    private int tiempo;
+    private double tiempo;
     private String nombre;
 
-    public Balsa(int capacidad, String nombre, int tiempo) {
-        this.capacidad = capacidad;
+    public Balsa(String nombre, int capacidad, double tiempo) {
         this.nombre = nombre;
+        this.capacidad = capacidad;
         this.tiempo = tiempo;
     }
 
-    public Balsa(int capacidad, int tiempo) {
+    public Balsa(int capacidad, double tiempo) {
         this.capacidad = capacidad;
         this.tiempo = tiempo;
     }
@@ -19,11 +19,11 @@ public class Balsa {
         this.capacidad = capacidad;
     }
 
-    public int getTiempo() {
+    public double getTiempo() {
         return tiempo;
     }
 
-    public void setTiempo(int tiempo) {
+    public void setTiempo(double tiempo) {
         this.tiempo = tiempo;
     }
 
