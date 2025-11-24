@@ -37,7 +37,7 @@ public class Main {
         Thread hiloDeimos = new Thread(rescate4);
         Thread hiloExpedicion = new Thread(rescate5);
 
-        //Los empezamos
+        //Los empezamos.
         hiloAcasta.start();
         hiloBanff.start();
         hiloCadiz.start();
