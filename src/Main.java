@@ -19,7 +19,7 @@ public class Main {
             pasajeros.add(new Pasajero(i, (int) (Math.random()*4)+1));
         }
 
-        //Construimos barco con el array pasajeros
+        //Construimos barco con el array pasajeros.
         Barco barco = new Barco(pasajeros);
 
         //Creamos los rescates que se van a realizar con sus respectivas balsas
