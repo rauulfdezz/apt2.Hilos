@@ -1,23 +1,32 @@
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
 public class Rescate implements Runnable{
     private Balsa balsa;
     private Barco barco;
+    private Semaphore semaphore;
 
     public Rescate(){
 
     }
 
-    public Rescate(Balsa balsa, Barco barco) {
+    public Rescate(Balsa balsa, Barco barco, Semaphore semaphore) {
         this.balsa = balsa;
         this.barco = barco;
+        this.semaphore = semaphore;
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
     }
 
     @Override
     public void run() {
         while (barco.hayPasajeros()) {
             try {
-                Thread.sleep((long) (balsa.getTiempo() * 1000));
+                System.out.println(balsa.getNombre()+" está esperando su turno..");
+                this.getSemaphore().acquire();
+                System.out.println(balsa.getNombre()+ " ha conseguido su turno");
 
                 ArrayList<Pasajero> rescatadosEnViaje = new ArrayList<>();
                 int capacidadActual = 0;
@@ -45,6 +54,11 @@ public class Rescate implements Runnable{
                     System.out.println("");
 
                 }
+
+                System.out.println(balsa.getNombre()+ " libera el turno");
+                this.getSemaphore().release();
+
+                Thread.sleep((long) (balsa.getTiempo() * 1000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
