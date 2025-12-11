@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -22,12 +23,15 @@ public class Main {
         //Construimos barco con el array pasajeros.
         Barco barco = new Barco(pasajeros);
 
+        //Creamos el semáforo
+        Semaphore semaphore=new Semaphore(1);
+
         //Creamos los rescates que se van a realizar con sus respectivas balsas
-        Rescate rescate1= new Rescate(Acasta,barco);
-        Rescate rescate2= new Rescate(Banff,barco);
-        Rescate rescate3= new Rescate(Cadiz,barco);
-        Rescate rescate4= new Rescate(Deimos,barco);
-        Rescate rescate5= new Rescate(Expedicion,barco);
+        Rescate rescate1= new Rescate(Acasta,barco,semaphore);
+        Rescate rescate2= new Rescate(Banff,barco,semaphore);
+        Rescate rescate3= new Rescate(Cadiz,barco,semaphore);
+        Rescate rescate4= new Rescate(Deimos,barco,semaphore);
+        Rescate rescate5= new Rescate(Expedicion,barco,semaphore);
 
 
         //Creamos los hilos de rescates
